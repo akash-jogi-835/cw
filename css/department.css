@@ -1,0 +1,30 @@
+/* Department-specific styles */
+#departments-intro {
+    text-align: center;
+    background-color: #f0f8ff;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+#cse-department, #aiml-department, #ece-department, #eee-department {
+    border-left: 5px solid #0072B8;
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+#cse-department h2, #aiml-department h2, #ece-department h2, #eee-department h2 {
+    color: #0072B8;
+}
+
+#cse-department h3, #aiml-department h3, #ece-department h3, #eee-department h3 {
+    color: #333;
+    margin-top: 20px;
+}
+
+#cse-department ul, #aiml-department ul, #ece-department ul, #eee-department ul {
+    padding-left: 20px;
+}
+
+#cse-department li, #aiml-department li, #ece-department li, #eee-department li {
+    margin-bottom: 10px;
+}
