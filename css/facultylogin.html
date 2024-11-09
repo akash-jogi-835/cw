@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .login-container, .profile-card {
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+    .login-container.active, .profile-card.active {
+      display: block;
+    }
+    h2 {
+      font-size: 24px;
+      color: #2a3b8d;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .login-button, .logout-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2a3b8d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .login-button:hover, .logout-button:hover {
+      background-color: #1f2f6d;
+    }
+    .profile-details h1, .profile-details h2 {
+      font-family: 'Comic Sans MS', cursive;
+      color: #2a3b8d;
+    }
+    .profile-details h2 {
+      font-size: 18px;
+      color: #2e8b57;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .info-table th, .info-table td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Login Form -->
+<div class="login-container active" id="loginForm">
+  <h2>Login</h2>
+  <input type="text" id="username" class="input-field" placeholder="Username" required>
+  <input type="password" id="password" class="input-field" placeholder="Password" required>
+  <button onclick="login()" class="login-button">Login</button>
+</div>
+
+<!-- Profile Card -->
+<div class="profile-card" id="profileCard">
+  <img src="profile.jpg" alt="Profile Image" style="width:100px; border-radius:50%;">
+  <div class="profile-details">
+    <h1>Narender</h1>
+    <h2>B.Tech</h2>
+    <table class="info-table">
+      <tr>
+        <td>Name</td>
+        <td>Narender</td>
+      </tr>
+      <tr>
+        <td>Date of Birth</td>
+        <td>19/04/1995</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Father</td>
+        <td>Ramulu</td>
+      </tr>
+      <tr>
+        <td>Spouse</td>
+        <td>Smt. *****</td>
+      </tr>
+      <tr>
+        <td>Birth Place</td>
+        <td>Gandhari</td>
+      </tr>
+      <tr>
+        <td>Education</td>
+        <td>mrce</td>
+      </tr>
+      <tr>
+        <td>Office</td>
+        <td>040-23452933; 23455205; 23456698; Fax: 23452498</td>
+      </tr>
+      <tr>
+        <td>Residence</td>
+        <td></td>
+      </tr>
+    </table>
+    <button onclick="logout()" class="logout-button">Logout</button>
+  </div>
+</div>
+
+<script>
+  function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Replace these with actual username and password for authentication
+    const correctUsername = 'user';
+    const correctPassword = 'password';
+
+    if (username === correctUsername && password === correctPassword) {
+      document.getElementById('loginForm').classList.remove('active');
+      document.getElementById('profileCard').classList.add('active');
+      window.addEventListener('beforeunload', confirmLogout);
+    } else {
+      alert('Invalid username or password');
+    }
+  }
+
+  function logout() {
+    document.getElementById('profileCard').classList.remove('active');
+    document.getElementById('loginForm').classList.add('active');
+    window.removeEventListener('beforeunload', confirmLogout);
+  }
+
+  function confirmLogout(event) {
+    const confirmationMessage = 'You are about to leave the page. Are you sure you want to logout?';
+    event.returnValue = confirmationMessage; // For legacy browsers
+    return confirmationMessage; // For most modern browsers
+  }
+</script>
+
+</body>
+</html>
